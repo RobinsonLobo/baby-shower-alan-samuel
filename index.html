@@ -139,6 +139,13 @@
             animation: pulse 2s ease-in-out infinite;
         }
 
+        .hero-animals {
+            font-size: 1.5em;
+            color: #f9a826;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.5; }
@@ -718,16 +725,19 @@
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
-            .hero-title { font-size: 1.3em; }
-            .baby-name { font-size: 2.5em; letter-spacing: 2px; }
-            .hero-subtitle { font-size: 1em; }
+            .hero-title { font-size: 1em; }
+            .baby-name { font-size: 2em; letter-spacing: 2px; }
+            .hero-subtitle { font-size: 0.9em; }
+            .hero-content { 
+                padding: 10px;
+                max-width: 85% !important;
+            }
             .section-title { 
                 font-size: 1.8em;
                 padding: 12px 25px;
                 border-width: 3px;
             }
             .info-grid { grid-template-columns: 1fr; }
-            .hero-content { padding: 15px; }
             .form-wrapper { padding: 25px; }
             .category-header { flex-wrap: wrap; }
             .category-limit { margin-top: 10px; width: 100%; text-align: center; }
@@ -741,6 +751,19 @@
             .form-header-title { font-size: 1.8em; }
             .form-header-subtitle { font-size: 1em; }
         }
+
+        /* RESPONSIVE EXTRA PARA MÓVILES MUY PEQUEÑOS */
+        @media (max-width: 480px) {
+            .hero-title { font-size: 0.85em; margin-bottom: 3px; }
+            .baby-name { font-size: 1.6em; letter-spacing: 1px; margin: 5px 0; }
+            .hero-subtitle { font-size: 0.8em; margin-bottom: 5px; }
+            .hero-content { 
+                padding: 8px;
+                max-width: 90% !important;
+            }
+            .hero-animals { font-size: 1em; margin-top: 10px; }
+            .scroll-indicator { font-size: 0.8em; margin-top: 8px; }
+        }
     </style>
 </head>
 <body>
@@ -753,7 +776,7 @@
                 <div class="baby-name">BABY SHOWER</div>
                 <h2 class="hero-subtitle">de nuestro pequeño</h2>
                 <h1 class="baby-name" style="font-size: 2.5em; color: #7cb342; text-shadow: 3px 3px 0px #558b2f;">ALAN SAMUEL</h1>
-                <div style="font-size: 1.5em; color: #f9a826; margin-top: 20px; font-weight: 600;">
+                <div class="hero-animals">
                     🦁 🐘 🦒 🐵 🦓
                 </div>
                 <p class="scroll-indicator">⬇ Desliza para ver los detalles ⬇</p>
