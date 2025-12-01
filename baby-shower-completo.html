@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baby Shower Safari - Alan Samuel</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Fredoka', 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            overflow-x: hidden;
+        }
+
+        /* PORTADA */
+        .hero-section {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f5f3e8;
+            padding: 20px;
+        }
+
+        .hero-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-background {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .hero-content {
+            background: transparent;
+            padding: 20px;
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
+
+        .hero-title {
+            font-family: 'Fredoka', cursive;
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #4a7c59;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .baby-name {
+            font-family: 'Bowlby One SC', cursive;
+            font-size: 3em;
+            color: #f9a826;
+            margin: 10px 0;
+            text-shadow: 4px 4px 0px #e88a1a;
+            letter-spacing: 3px;
+            line-height: 1.1;
+            animation: zoomIn 1.2s ease-out;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .baby-name:hover {
+            transform: scale(1.05) rotate(-2deg);
+            text-shadow: 6px 6px 0px #e88a1a;
+        }
+
+        .hero-subtitle {
+            font-family: 'Fredoka', cursive;
+            font-size: 1.2em;
+            font-weight: 400;
+            color: #7cb342;
+            margin-bottom: 10px;
+            text-transform: lowercase;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .scroll-indicator {
+            margin-top: 15px;
+            font-size: 1em;
+            font-weight: 500;
+            color: #666;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* SECCIÓN DE INFORMACIÓN */
+        .info-section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .info-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 5px solid;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .info-card.date { border-color: #7cb342; }
+        .info-card.location { border-color: #f9a826; }
+        .info-card.guests { border-color: #e57373; }
+
+        .info-icon {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            display: inline-block;
+            padding: 20px;
+            background: linear-gradient(135deg, #f9d849 0%, #f9a826 100%);
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(249, 168, 38, 0.3);
+            margin: 0 auto 20px auto;
+        }
+
+        .info-card.date .info-icon {
+            background: linear-gradient(135deg, #7cb342 0%, #558b2f 100%);
+        }
+
+        .info-card.location .info-icon {
+            background: linear-gradient(135deg, #f9a826 0%, #e88a1a 100%);
+        }
+
+        .info-card.guests .info-icon {
+            background: linear-gradient(135deg, #e57373 0%, #ef5350 100%);
+        }
+
+        .info-card h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #4a7c59;
+        }
+
+        .info-card p {
+            font-size: 1.2em;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .editable {
+            background: #fff9e6;
+            padding: 5px 10px;
+            border-radius: 8px;
+            display: inline-block;
+            margin: 5px 0;
+        }
+
+        .maps-link {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #7cb342;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .maps-link:hover {
+            background: #558b2f;
+            transform: translateY(-2px);
+        }
+
+        .parents-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 20px 0;
+            border: 5px solid #f9d849;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* TÍTULOS DE SECCIÓN */
+        .section-title {
+            font-family: 'Bowlby One SC', cursive;
+            font-size: 3em;
+            color: #2d5016;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 0px #f9d849;
+            letter-spacing: 2px;
+            display: inline-block;
+            padding: 15px 40px;
+            border: 4px solid #558b2f;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .section-title-wrapper {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.3em;
+            color: #666;
+            margin-bottom: 50px;
+        }
+
+        .gifts-intro {
+            background: linear-gradient(135deg, #fff9e6 0%, #ffe6cc 100%);
+            border-radius: 25px;
+            padding: 30px 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 4px solid #f9d849;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gifts-intro::before {
+            content: '🎁';
+            position: absolute;
+            font-size: 8em;
+            opacity: 0.1;
+            top: -20px;
+            left: -20px;
+            transform: rotate(-15deg);
+        }
+
+        .gifts-intro::after {
+            content: '🎁';
+            position: absolute;
+            font-size: 8em;
+            opacity: 0.1;
+            bottom: -20px;
+            right: -20px;
+            transform: rotate(15deg);
+        }
+
+        .gifts-intro-text {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #4a7c59;
+            margin-bottom: 15px;
+            line-height: 1.4;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.8);
+        }
+
+        .gifts-intro-icon {
+            display: inline-block;
+            animation: bounce 2s ease-in-out infinite;
+            font-size: 1.2em;
+        }
+
+        .gifts-intro-icon:first-child {
+            animation-delay: 0s;
+        }
+
+        .gifts-intro-icon:last-child {
+            animation-delay: 1s;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .gifts-intro-subtitle {
+            font-size: 1.2em;
+            color: #7cb342;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+            font-style: italic;
+        }
+
+        /* SECCIÓN DE REGALOS */
+        .gifts-section {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c3e6cb 100%);
+            padding: 80px 20px;
+        }
+
+        .gifts-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .gift-category {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-left: 8px solid;
+        }
+
+        .gift-category.ropa { border-color: #e57373; }
+        .gift-category.bano { border-color: #64b5f6; }
+        .gift-category.alimentacion { border-color: #f9a826; }
+        .gift-category.dormir { border-color: #ba68c8; }
+        .gift-category.juegos { border-color: #7cb342; }
+        .gift-category.dinero { border-color: #ffd54f; }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .category-icon {
+            font-size: 2.5em;
+            margin-right: 15px;
+        }
+
+        .category-title {
+            font-family: 'Fredoka', cursive;
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #4a7c59;
+            flex: 1;
+        }
+
+        .category-limit {
+            background: #f9d849;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .gift-items {
+            display: grid;
+            gap: 15px;
+        }
+
+        .gift-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+
+        .gift-item:hover {
+            background: #fff9e6;
+            border-color: #f9d849;
+        }
+
+        .gift-item.selected {
+            background: #e8f5e9;
+            border-color: #7cb342;
+        }
+
+        .gift-item.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .gift-checkbox {
+            width: 25px;
+            height: 25px;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        .gift-name {
+            flex: 1;
+            font-size: 1.1em;
+            color: #333;
+        }
+
+        .gift-counter {
+            background: #fff;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            color: #666;
+            border: 2px solid #ddd;
+        }
+
+        /* FORMULARIO */
+        .form-section {
+            background: white;
+            padding: 80px 20px;
+        }
+
+        .confirmation-section {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            padding: 60px 20px 80px 20px;
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-wrapper {
+            background: white;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border-left: 8px solid #7cb342;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px dashed #f9d849;
+        }
+
+        .form-header-icon {
+            font-size: 4em;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .form-header-title {
+            font-family: 'Bowlby One SC', cursive;
+            font-size: 2.2em;
+            color: #4a7c59;
+            margin-bottom: 10px;
+        }
+
+        .form-header-subtitle {
+            font-size: 1.2em;
+            color: #666;
+            font-style: italic;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 1.2em;
+            color: #4a7c59;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1em;
+            border: 3px solid #ddd;
+            border-radius: 12px;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #7cb342;
+        }
+
+        .selected-gifts-summary {
+            background: #fff9e6;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            border: 3px solid #f9d849;
+        }
+
+        .selected-gifts-summary h4 {
+            color: #4a7c59;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .selected-gifts-summary ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .selected-gifts-summary li {
+            padding: 8px 0;
+            color: #666;
+            border-bottom: 1px solid #f9d849;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 20px;
+            font-size: 1.5em;
+            background: linear-gradient(135deg, #7cb342 0%, #558b2f 100%);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .message {
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            display: none;
+            text-align: center;
+            font-size: 1.2em;
+        }
+
+        .message.success {
+            background: #e8f5e9;
+            color: #2e7d32;
+            border: 3px solid #7cb342;
+        }
+
+        .message.error {
+            background: #ffebee;
+            color: #c62828;
+            border: 3px solid #e57373;
+        }
+
+        .message.show {
+            display: block;
+        }
+
+        /* FOOTER */
+        footer {
+            background: linear-gradient(135deg, #2d5016 0%, #4a7c59 100%);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 1.1em;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #f9d849, transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        footer p {
+            margin: 10px 0;
+            animation: fadeIn 2s ease-out;
+        }
+
+        .footer-animals {
+            font-size: 1.8em;
+            display: inline-block;
+            margin: 10px 0;
+        }
+
+        .footer-animals span {
+            display: inline-block;
+            margin: 0 8px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            animation: floatAnimal 3s ease-in-out infinite;
+        }
+
+        .footer-animals span:nth-child(1) { animation-delay: 0s; }
+        .footer-animals span:nth-child(2) { animation-delay: 0.5s; }
+        .footer-animals span:nth-child(3) { animation-delay: 1s; }
+        .footer-animals span:nth-child(4) { animation-delay: 1.5s; }
+        .footer-animals span:nth-child(5) { animation-delay: 2s; }
+
+        .footer-animals span:hover {
+            transform: scale(1.5) rotate(15deg);
+        }
+
+        @keyframes floatAnimal {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .footer-message {
+            font-size: 1.3em;
+            font-weight: 600;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .footer-parents {
+            font-size: 1.1em;
+            margin-top: 20px;
+            opacity: 0.9;
+            font-style: italic;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-parents::before,
+        .footer-parents::after {
+            content: '💝';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        .footer-parents::before {
+            left: -40px;
+        }
+
+        .footer-parents::after {
+            right: -40px;
+            animation-delay: 0.75s;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: translateY(-50%) scale(1); }
+            50% { transform: translateY(-50%) scale(1.3); }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 1.3em; }
+            .baby-name { font-size: 2.5em; letter-spacing: 2px; }
+            .hero-subtitle { font-size: 1em; }
+            .section-title { 
+                font-size: 1.8em;
+                padding: 12px 25px;
+                border-width: 3px;
+            }
+            .info-grid { grid-template-columns: 1fr; }
+            .hero-content { padding: 15px; }
+            .form-wrapper { padding: 25px; }
+            .category-header { flex-wrap: wrap; }
+            .category-limit { margin-top: 10px; width: 100%; text-align: center; }
+            .parents-photo { width: 150px; height: 150px; }
+            .gifts-intro { padding: 20px 25px; }
+            .gifts-intro-text { font-size: 1.4em; }
+            .gifts-intro-subtitle { font-size: 1em; }
+            .gifts-intro::before,
+            .gifts-intro::after { font-size: 5em; }
+            .form-header-icon { font-size: 3em; }
+            .form-header-title { font-size: 1.8em; }
+            .form-header-subtitle { font-size: 1em; }
+        }
+    </style>
+</head>
+<body>
+    <!-- PORTADA -->
+    <section class="hero-section">
+        <div class="hero-wrapper">
+            <img src="fondo-safari.jpg" alt="Fondo Safari" class="hero-background">
+            <div class="hero-content">
+                <h1 class="hero-title">¡Nos complace invitarte!</h1>
+                <div class="baby-name">BABY SHOWER</div>
+                <h2 class="hero-subtitle">de nuestro pequeño</h2>
+                <h1 class="baby-name" style="font-size: 2.5em; color: #7cb342; text-shadow: 3px 3px 0px #558b2f;">ALAN SAMUEL</h1>
+                <div style="font-size: 1.5em; color: #f9a826; margin-top: 20px; font-weight: 600;">
+                    🦁 🐘 🦒 🐵 🦓
+                </div>
+                <p class="scroll-indicator">⬇ Desliza para ver los detalles ⬇</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- INFORMACIÓN DEL EVENTO -->
+    <section class="info-section">
+        <div class="section-title-wrapper">
+            <h2 class="section-title">Detalles del Evento</h2>
+        </div>
+        
+        <div class="info-grid">
+            <!-- Fecha y Hora -->
+            <div class="info-card date">
+                <div class="info-icon">🗓️</div>
+                <h3>Fecha y Hora</h3>
+                <p>
+                    <span class="editable">Sábado, 15 de Diciembre 2024</span><br>
+                    <span class="editable">3:00 PM</span>
+                </p>
+            </div>
+
+            <!-- Dirección -->
+            <div class="info-card location">
+                <div class="info-icon">📌</div>
+                <h3>Dirección</h3>
+                <p>
+                    <span class="editable">Calle 25N #15b-29</span><br>
+                    <span class="editable">Montevideo 2</span><br>
+                    <span class="editable">Cúcuta, Colombia</span>
+                </p>
+                <a href="https://maps.app.goo.gl/tZibUgkRMw21axnh8" target="_blank" class="maps-link">
+                    📍 Ver en Google Maps
+                </a>
+            </div>
+
+            <!-- Padres -->
+            <div class="info-card guests">
+                <div class="info-icon">💑</div>
+                <h3>Futuros Papás</h3>
+                <img src="foto-padres.jpg" alt="Brayan y Angie" class="parents-photo">
+                <p>
+                    <strong>Brayan & Angie</strong>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULARIO DE DATOS PERSONALES -->
+    <section class="form-section">
+        <div class="form-container">
+            <div class="section-title-wrapper">
+                <h2 class="section-title">Tus Datos</h2>
+            </div>
+            
+            <div class="form-wrapper">
+                <div class="form-header">
+                    <span class="form-header-icon">📝</span>
+                    <h3 class="form-header-title">Confirma tu Asistencia</h3>
+                    <p class="form-header-subtitle">Por favor completa tus datos</p>
+                </div>
+
+                <form id="rsvpForm">
+                    <div class="form-group">
+                        <label for="guestName">Nombre Completo *</label>
+                        <input type="text" id="guestName" name="guestName" required placeholder="Tu nombre completo">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="guestPhone">Teléfono *</label>
+                        <input type="tel" id="guestPhone" name="guestPhone" required placeholder="Ej: 3001234567">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="guestEmail">Email</label>
+                        <input type="email" id="guestEmail" name="guestEmail" placeholder="tu@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="numberOfGuests">Número de Acompañantes (máximo 5) *</label>
+                        <input type="number" id="numberOfGuests" name="numberOfGuests" min="0" max="5" value="0" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comments">Mensaje para los padres (opcional)</label>
+                        <textarea id="comments" name="comments" rows="4" placeholder="Escribe un mensaje especial..."></textarea>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- SELECCIÓN DE REGALOS -->
+    <section class="gifts-section">
+        <div class="gifts-container">
+            <div class="section-title-wrapper">
+                <h2 class="section-title">🎁 Mesa de Regalos 🎁</h2>
+            </div>
+            <div class="gifts-intro">
+                <p class="gifts-intro-text">
+                    <span class="gifts-intro-icon">🎈</span>
+                    Elige el regalo que deseas obsequiar a Alan Samuel
+                    <span class="gifts-intro-icon">🎈</span>
+                </p>
+                <p class="gifts-intro-subtitle">
+                    Cada regalo cuenta una historia de amor para nuestro bebé ❤️
+                </p>
+            </div>
+
+            <!-- ROPA Y ACCESORIOS -->
+            <div class="gift-category ropa">
+                <div class="category-header">
+                    <span class="category-icon">👕</span>
+                    <h3 class="category-title">Ropa y Accesorios</h3>
+                    <span class="category-limit">Límite: 4 por opción</span>
+                </div>
+                <div class="gift-items">
+                    <div class="gift-item" data-category="ropa" data-item="ropa3-6" data-limit="4">
+                        <input type="checkbox" class="gift-checkbox">
+                        <span class="gift-name">Ropa de 3 a 6 meses</span>
+                        <span class="gift-counter">0/4 elegidos</span>
+                    </div>
+                    <div class="gift-item" data-category="ropa" data-item="ropa6-12" data-limit="4">
+                        <input type="checkbox" class="gift-checkbox">
+                        <span class="gift-name">Ropa de 6 a 12 meses</span>
+                        <span class="gift-counter">0/4 elegidos</span>
+                    </div>
+                    <div class="gift-item" data-category="ropa" data-item="baberos" data-limit="4">
+                        <input type="checkbox" class="gift-checkbox">
+                        <span class="gift-name">Baberos</span>
+                        <span class="gift-counter">0/4 elegidos</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BAÑO Y CUIDADO -->
+            <div class="gift-category bano">
+                <div class="category-header">
+                    <span class="category-icon">🛁</span>
+                    <h3 class="category-title">Artículos de Baño y Cuidado</h3>
+                    <span class="category-limit">Límite: 2 por opción</span>
+                </div>
+                <div class="gift-items">
+                    <div class="gift-item" data-category="bano" data-item="banera" data-limit="2">
+                        <input type="checkbox" class="gift-checkbox">
+                        <span class="gift-name">Bañera para bebé</span>
+                        <span class="gift-counter">0/2 elegidos</span>
+                    </div>
+                    <div class="gift-item" data-category="bano" data-item="toallas" data-limit="2">
+                        <input type="checkbox" class="gift-checkbox">
+                        <span class="gift-name">Toallas con capucha</span>
+                        <span class="gift-counter">0/2 elegidos</span>
+                    </div>
+                    <div class="gift-item" data-category="bano" data-item="set-aseo" data-limit="2">
+                        <input type="checkbox" class="gift-checkbox">
+                        <span class="gift-name">Set de aseo</span>
+                        <span class="gift-counter">0/2 elegidos</span>
+                    </div>
+                    <div class="gift-item" data-category="bano" data-item="higiene" data-limit="2">
+                        <input type="checkbox" class="gift-checkbox">
+                        <span class="gift-name">Artículos de higiene</span>
+                        <span class="gift-counter">0/2 elegidos</span>
+                    </div>
+                    <div class="gift-item" data-category="bano" data-item="cambiador" data-limit="2">
+                        <input type="checkbox" class="gift-checkbox">
+                        <span class="gift-name">Cambiador portátil o de mesa</span>
+                        <span class="gift-counter">0/2 elegidos</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ALIMENTACIÓN -->
+            <div class="gift-category alimentacion">
+                <div class="category-header">
+                    <span class="category-icon">🍼</span>
+                    <h3 class="category-title">Alimentación</h3>
+                    <span class="category-limit">Límite: 1 por opción</span>
+                </div>
+                <div class="gift-items">
+                    <div class="gift-item" data-category="alimentacion" data-item="biberones" data-limit="1">
+                        <input type="checkbox" class="gift-checkbox">
+                        <span class="gift-name">Biberones</span>
+                        <span class="gift-counter">0/1 elegido</span>
+                    </div>
+                    <div class="gift-item" data-category="alimentacion" data-item="cojin" data-limit="1">
+                        <input type="checkbox" class="gift-checkbox">
+                        <span class="gift-name">Cojín de lactancia</span>
+                        <span class="gift-counter">0/1 elegido</span>
+                    </div>
+                    <div class="gift-item" data-category="alimentacion" data-item="extractor" data-limit="1">
+                        <input type="checkbox" class="gift-checkbox">
+                        <span class="gift-name">Extractor de leche</span>
+                        <span class="gift-counter">0/1 elegido</span>
+                    </div>
+                    <div class="gift-item" data-category="alimentacion" data-item="silla" data-limit="1">
+                        <input type="checkbox" class="gift-checkbox">
+                        <span class="gift-name">Silla comedor para bebé</span>
+                        <span class="gift-counter">0/1 elegido</span>
+                    </div>
+                    <div class="gift-item" data-category="alimentacion" data-item="set-alim" data-limit="1">
+                        <input type="checkbox" class="gift-checkbox">
+                        <span class="gift-name">Set alimentación complementaria</span>
+                        <span class="gift-counter">0/1 elegido</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DORMIR Y DESCANSAR -->
+            <div class="gift-category dormir">
+                <div class="category-header">
+                    <span class="category-icon">🌙</span>
+                    <h3 class="category-title">Dormir y Descansar</h3>
+                    <span class="category-limit">Límite: 1 por opción</span>
+                </div>
+                <div class="gift-items">
+                    <div class="gift-item" data-category="dormir" data-item="sabana" data-limit="1">
+                        <input type="checkbox" class="gift-checkbox">
+                        <span class="gift-name">Sábana</span>
+                        <span class="gift-counter">0/1 elegido</span>
+                    </div>
+                    <div class="gift-item" data-category="dormir" data-item="mantas" data-limit="1">
+                        <input type="checkbox" class="gift-checkbox">
+                        <span class="gift-name">Mantas</span>
+                        <span class="gift-counter">0/1 elegido</span>
+                    </div>
+                    <div class="gift-item" data-category="dormir" data-item="mecedora" data-limit="1">
+                        <input type="checkbox" class="gift-checkbox">
+                        <span class="gift-name">Mecedora para bebé</span>
+                        <span class="gift-counter">0/1 elegido</span>
+                    </div>
+                    <div class="gift-item" data-category="dormir" data-item="nido" data-limit="1">
+                        <input type="checkbox" class="gift-checkbox">
+                        <span class="gift-name">Nido colecho</span>
+                        <span class="gift-counter">0/1 elegido</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- JUEGOS Y DESARROLLO -->
+            <div class="gift-category juegos">
+                <div class="category-header">
+                    <span class="category-icon">🧸</span>
+                    <h3 class="category-title">Juegos y Desarrollo</h3>
+                    <span class="category-limit">Límite: 1 por opción</span>
+                </div>
+                <div class="gift-items">
+                    <div class="gift-item" data-category="juegos" data-item="sonajeros" data-limit="1">
+                        <input type="checkbox" class="gift-checkbox">
+                        <span class="gift-name">Sonajeros, mordedores y juguetes suaves</span>
+                        <span class="gift-counter">0/1 elegido</span>
+                    </div>
+                    <div class="gift-item" data-category="juegos" data-item="alfombra" data-limit="1">
+                        <input type="checkbox" class="gift-checkbox">
+                        <span class="gift-name">Alfombra de juego acolchonada</span>
+                        <span class="gift-counter">0/1 elegido</span>
+                    </div>
+                    <div class="gift-item" data-category="juegos" data-item="gimnasio" data-limit="1">
+                        <input type="checkbox" class="gift-checkbox">
+                        <span class="gift-name">Gimnasio de actividades</span>
+                        <span class="gift-counter">0/1 elegido</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DINERO -->
+            <div class="gift-category dinero">
+                <div class="category-header">
+                    <span class="category-icon">💰</span>
+                    <h3 class="category-title">Aporte en Dinero</h3>
+                    <span class="category-limit">Sin límite</span>
+                </div>
+                <div class="gift-items">
+                    <div class="gift-item" data-category="dinero" data-item="dinero" data-limit="999">
+                        <input type="checkbox" class="gift-checkbox">
+                        <span class="gift-name">Aporte monetario para Alan Samuel</span>
+                        <span class="gift-counter">Disponible</span>
+                    </div>
+                </div>
+                <div id="moneyAmountContainer" style="display: none; margin-top: 20px; padding: 20px; background: #fff9e6; border-radius: 12px;">
+                    <label for="moneyAmount" style="display: block; font-size: 1.2em; color: #4a7c59; margin-bottom: 10px; font-weight: bold;">
+                        💵 ¿Cuánto deseas aportar?
+                    </label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span style="font-size: 1.5em; color: #4a7c59;">$</span>
+                        <input type="number" id="moneyAmount" placeholder="Ejemplo: 50000" min="1" 
+                               style="flex: 1; padding: 15px; font-size: 1.2em; border: 3px solid #f9d849; border-radius: 12px;">
+                    </div>
+                    <p style="margin-top: 10px; font-size: 0.9em; color: #666;">
+                        * Ingresa el monto en pesos colombianos (COP)
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESUMEN Y BOTÓN DE CONFIRMACIÓN -->
+    <section class="confirmation-section">
+        <div class="form-container" style="max-width: 700px;">
+            <div id="selectedGiftsSummary" class="selected-gifts-summary" style="display: none;">
+                <h4>🎁 Regalo seleccionado:</h4>
+                <ul id="giftsList"></ul>
+            </div>
+
+            <div id="messageContainer"></div>
+
+            <button type="button" id="submitBtn" class="submit-btn">
+                ✨ Confirmar Asistencia ✨
+            </button>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-animals">
+            <span>🦁</span>
+            <span>🐘</span>
+            <span>🦒</span>
+            <span>🐵</span>
+            <span>🦓</span>
+        </div>
+        <p class="footer-message">¡Esperamos verte en el Baby Shower de Alan Samuel!</p>
+        <p class="footer-parents">Brayan & Angie</p>
+    </footer>
+
+    <script>
+        // SISTEMA DE GESTIÓN DE REGALOS MEJORADO
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyhgk7yiv0U9dIDECAd3Ti3wJzUtWTm8LrUIRGcrvrUHD-SDNsprHZy8BA030eun4Ci/exec';
+        
+        const giftsData = {};
+        let selectedGift = null; // Solo UN regalo permitido
+        let moneyAmount = 0;
+
+        // Cargar contadores desde Google Sheets
+        async function loadGiftsFromSheets() {
+            try {
+                const response = await fetch(GOOGLE_SCRIPT_URL);
+                const data = await response.json();
+                
+                if (data.status === 'success') {
+                    return data.giftsCount || {};
+                }
+            } catch (error) {
+                console.log('📝 No se pudieron cargar los contadores, usando locales');
+            }
+            return {};
+        }
+
+        async function initializeGifts() {
+            // Cargar contadores desde Sheets
+            const sheetsCount = await loadGiftsFromSheets();
+            
+            const giftItems = document.querySelectorAll('.gift-item');
+            giftItems.forEach(item => {
+                const itemId = item.dataset.item;
+                const itemName = item.querySelector('.gift-name').textContent;
+                const limit = parseInt(item.dataset.limit);
+                
+                // Contar cuántos hay en Sheets
+                const sheetCount = sheetsCount[itemName] || 0;
+                
+                giftsData[itemId] = {
+                    name: itemName,
+                    limit: limit,
+                    current: sheetCount,
+                    element: item
+                };
+
+                updateGiftDisplay(itemId);
+            });
+        }
+
+        function updateGiftDisplay(itemId) {
+            const gift = giftsData[itemId];
+            const counter = gift.element.querySelector('.gift-counter');
+            
+            if (gift.limit === 999) {
+                counter.textContent = 'Disponible';
+            } else {
+                counter.textContent = `${gift.current}/${gift.limit} elegidos`;
+            }
+
+            // Deshabilitar si alcanzó el límite
+            if (gift.current >= gift.limit && gift.limit !== 999) {
+                gift.element.classList.add('disabled');
+                gift.element.style.display = 'none'; // OCULTAR completamente
+                const checkbox = gift.element.querySelector('.gift-checkbox');
+                checkbox.disabled = true;
+            } else {
+                gift.element.classList.remove('disabled');
+                gift.element.style.display = 'flex'; // MOSTRAR
+                gift.element.querySelector('.gift-checkbox').disabled = false;
+            }
+        }
+
+        function handleGiftSelection(item, isSelected) {
+            const itemId = item.dataset.item;
+            const itemName = giftsData[itemId].name;
+
+            if (isSelected) {
+                // DESMARCAR el regalo anterior si existe
+                if (selectedGift && selectedGift !== itemId) {
+                    const prevItem = giftsData[selectedGift].element;
+                    prevItem.classList.remove('selected');
+                    prevItem.querySelector('.gift-checkbox').checked = false;
+                    
+                    // Ocultar campo de dinero si es necesario
+                    if (selectedGift === 'dinero') {
+                        document.getElementById('moneyAmountContainer').style.display = 'none';
+                    }
+                }
+                
+                item.classList.add('selected');
+                selectedGift = itemId;
+                
+                // Mostrar campo de monto si es dinero
+                if (itemId === 'dinero') {
+                    document.getElementById('moneyAmountContainer').style.display = 'block';
+                    document.getElementById('moneyAmount').focus();
+                }
+            } else {
+                item.classList.remove('selected');
+                selectedGift = null;
+                
+                // Ocultar campo de dinero
+                if (itemId === 'dinero') {
+                    document.getElementById('moneyAmountContainer').style.display = 'none';
+                    document.getElementById('moneyAmount').value = '';
+                }
+            }
+
+            updateSelectedGiftsSummary();
+        }
+
+        function updateSelectedGiftsSummary() {
+            const summary = document.getElementById('selectedGiftsSummary');
+            const list = document.getElementById('giftsList');
+
+            if (!selectedGift) {
+                summary.style.display = 'none';
+                return;
+            }
+
+            summary.style.display = 'block';
+            list.innerHTML = '';
+
+            const li = document.createElement('li');
+            let giftText = giftsData[selectedGift].name;
+            
+            // Si es dinero, agregar el monto
+            if (selectedGift === 'dinero') {
+                const amount = document.getElementById('moneyAmount').value;
+                if (amount) {
+                    giftText += ` - $${parseInt(amount).toLocaleString('es-CO')} COP`;
+                }
+            }
+            
+            li.textContent = `✓ ${giftText}`;
+            list.appendChild(li);
+        }
+
+        function showMessage(text, type) {
+            const messageContainer = document.getElementById('messageContainer');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type} show`;
+            messageDiv.textContent = text;
+            messageContainer.appendChild(messageDiv);
+
+            setTimeout(() => {
+                messageDiv.classList.remove('show');
+                setTimeout(() => messageDiv.remove(), 300);
+            }, 5000);
+        }
+
+        async function sendToGoogleSheets(formData) {
+            try {
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                console.log('✅ Datos enviados a Google Sheets correctamente');
+                return { success: true };
+            } catch (error) {
+                console.error('❌ Error al enviar datos:', error);
+                throw error;
+            }
+        }
+
+        // EVENT LISTENERS
+        document.querySelectorAll('.gift-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                if (e.target.type === 'checkbox') return;
+                
+                const checkbox = this.querySelector('.gift-checkbox');
+                if (!checkbox.disabled) {
+                    checkbox.checked = !checkbox.checked;
+                    handleGiftSelection(this, checkbox.checked);
+                }
+            });
+
+            const checkbox = item.querySelector('.gift-checkbox');
+            checkbox.addEventListener('change', function(e) {
+                e.stopPropagation();
+                handleGiftSelection(item, this.checked);
+            });
+        });
+
+        // Event listener para el campo de monto de dinero
+        document.getElementById('moneyAmount').addEventListener('input', function() {
+            updateSelectedGiftsSummary();
+        });
+
+        document.getElementById('submitBtn').addEventListener('click', async function(e) {
+            e.preventDefault();
+
+            const messageContainer = document.getElementById('messageContainer');
+            messageContainer.innerHTML = '';
+
+            const form = document.getElementById('rsvpForm');
+            
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                document.querySelector('.form-section').scrollIntoView({ behavior: 'smooth' });
+                return;
+            }
+
+            if (!selectedGift) {
+                showMessage('⚠️ Por favor selecciona un regalo', 'error');
+                document.querySelector('.gifts-section').scrollIntoView({ behavior: 'smooth' });
+                return;
+            }
+
+            // Validar monto si es dinero
+            if (selectedGift === 'dinero') {
+                const amount = document.getElementById('moneyAmount').value;
+                if (!amount || amount <= 0) {
+                    showMessage('⚠️ Por favor ingresa el monto que deseas aportar', 'error');
+                    document.getElementById('moneyAmount').focus();
+                    return;
+                }
+                moneyAmount = amount;
+            }
+
+            let giftName = giftsData[selectedGift].name;
+            if (selectedGift === 'dinero' && moneyAmount) {
+                giftName += ` - $${parseInt(moneyAmount).toLocaleString('es-CO')} COP`;
+            }
+
+            const formData = {
+                nombre: document.getElementById('guestName').value,
+                telefono: document.getElementById('guestPhone').value,
+                email: document.getElementById('guestEmail').value || 'No proporcionado',
+                acompanantes: document.getElementById('numberOfGuests').value,
+                mensaje: document.getElementById('comments').value || 'Sin mensaje',
+                regalos: giftName,
+                fecha: new Date().toLocaleString('es-CO', {
+                    timeZone: 'America/Bogota',
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                })
+            };
+
+            try {
+                await sendToGoogleSheets(formData);
+
+                // Actualizar contador localmente
+                if (selectedGift !== 'dinero') {
+                    giftsData[selectedGift].current++;
+                    updateGiftDisplay(selectedGift);
+                }
+
+                showMessage('¡Confirmación exitosa! Gracias por confirmar tu asistencia 🎉', 'success');
+
+                setTimeout(() => {
+                    form.reset();
+                    selectedGift = null;
+                    moneyAmount = 0;
+                    document.getElementById('moneyAmountContainer').style.display = 'none';
+                    document.getElementById('moneyAmount').value = '';
+                    document.querySelectorAll('.gift-item').forEach(item => {
+                        item.classList.remove('selected');
+                        item.querySelector('.gift-checkbox').checked = false;
+                    });
+                    updateSelectedGiftsSummary();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    
+                    // Recargar contadores desde Sheets
+                    initializeGifts();
+                }, 3000);
+
+            } catch (error) {
+                showMessage('❌ Error al enviar la confirmación. Por favor intenta de nuevo.', 'error');
+                console.error('Error:', error);
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeGifts();
+            console.log('🎉 Sistema de Baby Shower Safari inicializado correctamente');
+        });
+    </script>
+</body>
+</html>
