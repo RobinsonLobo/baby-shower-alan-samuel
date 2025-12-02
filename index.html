@@ -1099,12 +1099,13 @@
     </footer>
 
     <script>
-        // SISTEMA DE GESTIÓN DE REGALOS MEJORADO
+        // SISTEMA DE GESTIÓN DE REGALOS MEJORADO CON ACTUALIZACIÓN AUTOMÁTICA
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyhgk7yiv0U9dIDECAd3Ti3wJzUtWTm8LrUIRGcrvrUHD-SDNsprHZy8BA030eun4Ci/exec';
         
         const giftsData = {};
-        let selectedGift = null; // Solo UN regalo permitido
+        let selectedGift = null;
         let moneyAmount = 0;
+        let autoUpdateInterval = null;
 
         // Cargar contadores desde Google Sheets
         async function loadGiftsFromSheets() {
@@ -1116,13 +1117,12 @@
                     return data.giftsCount || {};
                 }
             } catch (error) {
-                console.log('📝 No se pudieron cargar los contadores, usando locales');
+                console.log('📝 Usando contadores locales');
             }
             return {};
         }
 
         async function initializeGifts() {
-            // Cargar contadores desde Sheets
             const sheetsCount = await loadGiftsFromSheets();
             
             const giftItems = document.querySelectorAll('.gift-item');
@@ -1131,7 +1131,6 @@
                 const itemName = item.querySelector('.gift-name').textContent;
                 const limit = parseInt(item.dataset.limit);
                 
-                // Contar cuántos hay en Sheets
                 const sheetCount = sheetsCount[itemName] || 0;
                 
                 giftsData[itemId] = {
@@ -1145,6 +1144,47 @@
             });
         }
 
+        // NUEVA FUNCIÓN: Actualizar contadores desde Google Sheets
+        async function refreshGiftCounters() {
+            const sheetsCount = await loadGiftsFromSheets();
+            
+            let hasChanges = false;
+            
+            Object.keys(giftsData).forEach(itemId => {
+                const gift = giftsData[itemId];
+                const newCount = sheetsCount[gift.name] || 0;
+                
+                if (gift.current !== newCount) {
+                    gift.current = newCount;
+                    updateGiftDisplay(itemId);
+                    hasChanges = true;
+                }
+            });
+
+            if (hasChanges) {
+                console.log('🔄 Contadores actualizados automáticamente');
+            }
+        }
+
+        // NUEVA FUNCIÓN: Iniciar actualización automática
+        function startAutoUpdate() {
+            // Actualizar cada 30 segundos
+            autoUpdateInterval = setInterval(() => {
+                refreshGiftCounters();
+            }, 30000); // 30 segundos
+            
+            console.log('✅ Actualización automática activada (cada 30 segundos)');
+        }
+
+        // NUEVA FUNCIÓN: Detener actualización automática
+        function stopAutoUpdate() {
+            if (autoUpdateInterval) {
+                clearInterval(autoUpdateInterval);
+                autoUpdateInterval = null;
+                console.log('⏸️ Actualización automática pausada');
+            }
+        }
+
         function updateGiftDisplay(itemId) {
             const gift = giftsData[itemId];
             const counter = gift.element.querySelector('.gift-counter');
@@ -1155,15 +1195,20 @@
                 counter.textContent = `${gift.current}/${gift.limit} elegidos`;
             }
 
-            // Deshabilitar si alcanzó el límite
             if (gift.current >= gift.limit && gift.limit !== 999) {
                 gift.element.classList.add('disabled');
-                gift.element.style.display = 'none'; // OCULTAR completamente
+                gift.element.style.display = 'none';
                 const checkbox = gift.element.querySelector('.gift-checkbox');
                 checkbox.disabled = true;
+                
+                // Si el regalo seleccionado ya no está disponible, deseleccionarlo
+                if (selectedGift === itemId) {
+                    selectedGift = null;
+                    updateSelectedGiftsSummary();
+                }
             } else {
                 gift.element.classList.remove('disabled');
-                gift.element.style.display = 'flex'; // MOSTRAR
+                gift.element.style.display = 'flex';
                 gift.element.querySelector('.gift-checkbox').disabled = false;
             }
         }
@@ -1173,13 +1218,11 @@
             const itemName = giftsData[itemId].name;
 
             if (isSelected) {
-                // DESMARCAR el regalo anterior si existe
                 if (selectedGift && selectedGift !== itemId) {
                     const prevItem = giftsData[selectedGift].element;
                     prevItem.classList.remove('selected');
                     prevItem.querySelector('.gift-checkbox').checked = false;
                     
-                    // Ocultar campo de dinero si es necesario
                     if (selectedGift === 'dinero') {
                         document.getElementById('moneyAmountContainer').style.display = 'none';
                     }
@@ -1188,7 +1231,6 @@
                 item.classList.add('selected');
                 selectedGift = itemId;
                 
-                // Mostrar campo de monto si es dinero
                 if (itemId === 'dinero') {
                     document.getElementById('moneyAmountContainer').style.display = 'block';
                     document.getElementById('moneyAmount').focus();
@@ -1197,7 +1239,6 @@
                 item.classList.remove('selected');
                 selectedGift = null;
                 
-                // Ocultar campo de dinero
                 if (itemId === 'dinero') {
                     document.getElementById('moneyAmountContainer').style.display = 'none';
                     document.getElementById('moneyAmount').value = '';
@@ -1222,7 +1263,6 @@
             const li = document.createElement('li');
             let giftText = giftsData[selectedGift].name;
             
-            // Si es dinero, agregar el monto
             if (selectedGift === 'dinero') {
                 const amount = document.getElementById('moneyAmount').value;
                 if (amount) {
@@ -1285,7 +1325,6 @@
             });
         });
 
-        // Event listener para el campo de monto de dinero
         document.getElementById('moneyAmount').addEventListener('input', function() {
             updateSelectedGiftsSummary();
         });
@@ -1310,7 +1349,6 @@
                 return;
             }
 
-            // Validar monto si es dinero
             if (selectedGift === 'dinero') {
                 const amount = document.getElementById('moneyAmount').value;
                 if (!amount || amount <= 0) {
@@ -1347,7 +1385,6 @@
             try {
                 await sendToGoogleSheets(formData);
 
-                // Actualizar contador localmente
                 if (selectedGift !== 'dinero') {
                     giftsData[selectedGift].current++;
                     updateGiftDisplay(selectedGift);
@@ -1368,8 +1405,8 @@
                     updateSelectedGiftsSummary();
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                     
-                    // Recargar contadores desde Sheets
-                    initializeGifts();
+                    // Actualizar inmediatamente después de enviar
+                    refreshGiftCounters();
                 }, 3000);
 
             } catch (error) {
@@ -1378,9 +1415,21 @@
             }
         });
 
+        // Detectar cuando el usuario sale/cierra la pestaña
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                stopAutoUpdate();
+            } else {
+                startAutoUpdate();
+                refreshGiftCounters(); // Actualizar inmediatamente al volver
+            }
+        });
+
         document.addEventListener('DOMContentLoaded', () => {
             initializeGifts();
+            startAutoUpdate(); // Iniciar actualización automática
             console.log('🎉 Sistema de Baby Shower Safari inicializado correctamente');
+            console.log('🔄 Actualización automática: ACTIVADA (cada 30 segundos)');
         });
     </script>
 </body>
