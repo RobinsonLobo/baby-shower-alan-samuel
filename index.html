@@ -796,7 +796,7 @@
                 <div class="info-icon">🗓️</div>
                 <h3>Fecha y Hora</h3>
                 <p>
-                    <span class="editable">Sábado, 15 de Diciembre 2024</span><br>
+                    <span class="editable">Domingo, 14 de Diciembre 2025</span><br>
                     <span class="editable">3:00 PM</span>
                 </p>
             </div>
@@ -808,7 +808,7 @@
                 <p>
                     <span class="editable">Calle 25N #15b-29</span><br>
                     <span class="editable">Montevideo 2</span><br>
-                    <span class="editable">Cúcuta, Colombia</span>
+                    <span class="editable">Villa del Rosario, Colombia</span>
                 </p>
                 <a href="https://maps.app.goo.gl/tZibUgkRMw21axnh8" target="_blank" class="maps-link">
                     📍 Ver en Google Maps
@@ -853,11 +853,6 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="guestEmail">Email</label>
-                        <input type="email" id="guestEmail" name="guestEmail" placeholder="tu@email.com">
-                    </div>
-
-                    <div class="form-group">
                         <label for="numberOfGuests">Número de Acompañantes (máximo 5) *</label>
                         <input type="number" id="numberOfGuests" name="numberOfGuests" min="0" max="5" value="0" required>
                     </div>
@@ -893,18 +888,18 @@
                 <div class="category-header">
                     <span class="category-icon">👕</span>
                     <h3 class="category-title">Ropa y Accesorios</h3>
-                    <span class="category-limit">Límite: 4 por opción</span>
+                    <span class="category-limit">Límite: 10 por opción</span>
                 </div>
                 <div class="gift-items">
-                    <div class="gift-item" data-category="ropa" data-item="ropa3-6" data-limit="4">
+                    <div class="gift-item" data-category="ropa" data-item="ropa3-6" data-limit="10">
                         <input type="checkbox" class="gift-checkbox">
                         <span class="gift-name">Ropa de 3 a 6 meses</span>
-                        <span class="gift-counter">0/4 elegidos</span>
+                        <span class="gift-counter">0/10 elegidos</span>
                     </div>
-                    <div class="gift-item" data-category="ropa" data-item="ropa6-12" data-limit="4">
+                    <div class="gift-item" data-category="ropa" data-item="ropa6-12" data-limit="10">
                         <input type="checkbox" class="gift-checkbox">
                         <span class="gift-name">Ropa de 6 a 12 meses</span>
-                        <span class="gift-counter">0/4 elegidos</span>
+                        <span class="gift-counter">0/10 elegidos</span>
                     </div>
                     <div class="gift-item" data-category="ropa" data-item="baberos" data-limit="4">
                         <input type="checkbox" class="gift-checkbox">
@@ -932,15 +927,15 @@
                         <span class="gift-name">Toallas con capucha</span>
                         <span class="gift-counter">0/2 elegidos</span>
                     </div>
-                    <div class="gift-item" data-category="bano" data-item="set-aseo" data-limit="2">
+                    <div class="gift-item" data-category="bano" data-item="set-aseo" data-limit="15">
                         <input type="checkbox" class="gift-checkbox">
                         <span class="gift-name">Set de aseo</span>
-                        <span class="gift-counter">0/2 elegidos</span>
+                        <span class="gift-counter">0/15 elegidos</span>
                     </div>
-                    <div class="gift-item" data-category="bano" data-item="higiene" data-limit="2">
+                    <div class="gift-item" data-category="bano" data-item="higiene" data-limit="15">
                         <input type="checkbox" class="gift-checkbox">
                         <span class="gift-name">Artículos de higiene</span>
-                        <span class="gift-counter">0/2 elegidos</span>
+                        <span class="gift-counter">0/15 elegidos</span>
                     </div>
                     <div class="gift-item" data-category="bano" data-item="cambiador" data-limit="2">
                         <input type="checkbox" class="gift-checkbox">
@@ -991,18 +986,18 @@
                 <div class="category-header">
                     <span class="category-icon">🌙</span>
                     <h3 class="category-title">Dormir y Descansar</h3>
-                    <span class="category-limit">Límite: 1 por opción</span>
+                    <span class="category-limit">Límite: 1-5 por opción</span>
                 </div>
                 <div class="gift-items">
-                    <div class="gift-item" data-category="dormir" data-item="sabana" data-limit="1">
+                    <div class="gift-item" data-category="dormir" data-item="sabana" data-limit="5">
                         <input type="checkbox" class="gift-checkbox">
                         <span class="gift-name">Sábana</span>
-                        <span class="gift-counter">0/1 elegido</span>
+                        <span class="gift-counter">0/5 elegidos</span>
                     </div>
-                    <div class="gift-item" data-category="dormir" data-item="mantas" data-limit="1">
+                    <div class="gift-item" data-category="dormir" data-item="mantas" data-limit="5">
                         <input type="checkbox" class="gift-checkbox">
                         <span class="gift-name">Mantas</span>
-                        <span class="gift-counter">0/1 elegido</span>
+                        <span class="gift-counter">0/5 elegidos</span>
                     </div>
                     <div class="gift-item" data-category="dormir" data-item="mecedora" data-limit="1">
                         <input type="checkbox" class="gift-checkbox">
@@ -1334,7 +1329,7 @@
             const formData = {
                 nombre: document.getElementById('guestName').value,
                 telefono: document.getElementById('guestPhone').value,
-                email: document.getElementById('guestEmail').value || 'No proporcionado',
+                email: 'No proporcionado',
                 acompanantes: document.getElementById('numberOfGuests').value,
                 mensaje: document.getElementById('comments').value || 'Sin mensaje',
                 regalos: giftName,
