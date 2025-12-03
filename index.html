@@ -881,6 +881,9 @@
                 <p class="gifts-intro-subtitle">
                     Cada regalo cuenta una historia de amor para nuestro bebé ❤️
                 </p>
+                <p style="margin-top: 15px; font-size: 1em; color: #666; font-style: normal;">
+                    <em>* La selección de regalo es opcional. Puedes confirmar tu asistencia sin elegir ninguno.</em>
+                </p>
             </div>
 
             <!-- ROPA Y ACCESORIOS -->
@@ -1343,25 +1346,29 @@
                 return;
             }
 
-            if (!selectedGift) {
-                showMessage('⚠️ Por favor selecciona un regalo', 'error');
-                document.querySelector('.gifts-section').scrollIntoView({ behavior: 'smooth' });
-                return;
-            }
+            // REGALO AHORA ES OPCIONAL - NO SE VALIDA
+            // if (!selectedGift) {
+            //     showMessage('⚠️ Por favor selecciona un regalo', 'error');
+            //     document.querySelector('.gifts-section').scrollIntoView({ behavior: 'smooth' });
+            //     return;
+            // }
 
-            if (selectedGift === 'dinero') {
-                const amount = document.getElementById('moneyAmount').value;
-                if (!amount || amount <= 0) {
-                    showMessage('⚠️ Por favor ingresa el monto que deseas aportar', 'error');
-                    document.getElementById('moneyAmount').focus();
-                    return;
+            let giftName = 'Sin regalo'; // Valor por defecto si no selecciona nada
+
+            // Solo procesar regalo si hay uno seleccionado
+            if (selectedGift) {
+                if (selectedGift === 'dinero') {
+                    const amount = document.getElementById('moneyAmount').value;
+                    if (!amount || amount <= 0) {
+                        showMessage('⚠️ Por favor ingresa el monto que deseas aportar', 'error');
+                        document.getElementById('moneyAmount').focus();
+                        return;
+                    }
+                    moneyAmount = amount;
+                    giftName = giftsData[selectedGift].name + ` - $${parseInt(moneyAmount).toLocaleString('es-CO')} COP`;
+                } else {
+                    giftName = giftsData[selectedGift].name;
                 }
-                moneyAmount = amount;
-            }
-
-            let giftName = giftsData[selectedGift].name;
-            if (selectedGift === 'dinero' && moneyAmount) {
-                giftName += ` - $${parseInt(moneyAmount).toLocaleString('es-CO')} COP`;
             }
 
             const formData = {
@@ -1385,7 +1392,8 @@
             try {
                 await sendToGoogleSheets(formData);
 
-                if (selectedGift !== 'dinero') {
+                // Solo actualizar contador si seleccionó un regalo que no es dinero
+                if (selectedGift && selectedGift !== 'dinero') {
                     giftsData[selectedGift].current++;
                     updateGiftDisplay(selectedGift);
                 }
